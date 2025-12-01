@@ -8,27 +8,33 @@
     body {
       margin: 0;
       min-height: 100vh;
+      background: #111;
+
+      /* จัดกลางทั้งหมดในแนวตั้งแบบเสถียร */
       display: flex;
-      flex-direction: column;        /* เรียงหัวใจ + ปุ่มตามลำดับบนลงล่าง */
       justify-content: center;
       align-items: center;
-      background: #111;
     }
 
-    /* === 🌟 Pixel Heart 8-bit ใหญ่ ๆ === */
+    /* ====== WRAPPER ใหม่ (จุดสำคัญที่ทำให้มันไม่เพี้ยน) ====== */
+    .container {
+      display: flex;
+      flex-direction: column; /* เรียงบน → ล่าง */
+      align-items: center;
+    }
 
+    /* ===== Pixel Heart ===== */
     .pixel-heart-container {
-      width: 100%;
       display: flex;
       justify-content: center;
-      margin-bottom: 28px;  /* ระยะห่างระหว่างหัวใจกับปุ่ม */
+      margin-bottom: 30px;   /* ระยะห่างระหว่างหัวใจกับปุ่ม */
     }
 
     .pixel-heart {
       position: relative;
       width: 90px;
       height: 70px;
-      transform: scale(2);  
+      transform: scale(2);
       transform-origin: center;
       animation: pixelBlink 1s infinite steps(2);
     }
@@ -79,12 +85,12 @@
     }
 
     @keyframes pixelBlink {
-      0%   { filter: brightness(1);   transform: translateY(0)   scale(2); }
+      0%   { filter: brightness(1);   transform: translateY(0) scale(2); }
       50%  { filter: brightness(0.4); transform: translateY(-2px) scale(2); }
-      100% { filter: brightness(1);   transform: translateY(0)   scale(2); }
+      100% { filter: brightness(1);   transform: translateY(0) scale(2); }
     }
 
-    /* === ปุ่ม 8-bit (สวยแบบเกมเก่า) === */
+    /* ===== ปุ่ม ===== */
     .start-btn {
       padding: 12px 28px;
       font-size: 1.2rem;
@@ -96,31 +102,28 @@
       cursor: pointer;
       letter-spacing: 2px;
       font-family: "Courier New", monospace;
-
-      box-shadow: 0 0 0 4px #b30000 inset,
-                  0 6px 0 #660000;
-      transition: transform 0.1s ease;
-    }
-
-    .start-btn:hover {
-      filter: brightness(1.18);
+      box-shadow: 0 0 0 4px #b30000 inset, 0 6px 0 #660000;
+      transition: 0.1s ease;
     }
 
     .start-btn:active {
       transform: translateY(4px);
-      box-shadow: 0 0 0 4px #b30000 inset,
-                  0 2px 0 #660000;
+      box-shadow: 0 0 0 4px #b30000 inset, 0 2px 0 #660000;
     }
   </style>
 </head>
 
 <body>
-  <div class="pixel-heart-container">
-    <div class="pixel-heart"></div>
+
+  <div class="container">
+    <div class="pixel-heart-container">
+      <div class="pixel-heart"></div>
+    </div>
+
+    <button class="start-btn" onclick="location.href='wish.html'">
+      CLICK TO START
+    </button>
   </div>
 
-  <button class="start-btn" onclick="location.href='wish.html'">
-    CLICK TO START
-  </button>
 </body>
 </html>
