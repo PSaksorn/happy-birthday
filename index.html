@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pixel Heart Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+    }
+
+    /* === 🌟 Pixel Heart 8-bit ใหญ่ ๆ === */
+
+    .pixel-heart-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .pixel-heart {
+      position: relative;
+      width: 90px;
+      height: 70px;
+      transform: scale(2);          /* ขยายให้ใหญ่ */
+      transform-origin: center;
+      animation: pixelBlink 1s infinite steps(2);
+    }
+
+    .pixel-heart::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      box-shadow:
+        /* row 0 */
+        10px 0px #ff4b4b,
+        20px 0px #ff4b4b,
+        50px 0px #ff4b4b,
+        60px 0px #ff4b4b,
+        /* row 1 */
+        0px 10px #ff4b4b,
+        10px 10px #ff4b4b,
+        20px 10px #ff4b4b,
+        30px 10px #ff4b4b,
+        40px 10px #ff4b4b,
+        50px 10px #ff4b4b,
+        60px 10px #ff4b4b,
+        70px 10px #ff4b4b,
+        /* row 2 */
+        0px 20px #ff4b4b,
+        10px 20px #ff4b4b,
+        20px 20px #ff4b4b,
+        30px 20px #ff4b4b,
+        40px 20px #ff4b4b,
+        50px 20px #ff4b4b,
+        60px 20px #ff4b4b,
+        70px 20px #ff4b4b,
+        /* row 3 */
+        10px 30px #ff4b4b,
+        20px 30px #ff4b4b,
+        30px 30px #ff4b4b,
+        40px 30px #ff4b4b,
+        50px 30px #ff4b4b,
+        60px 30px #ff4b4b,
+        /* row 4 */
+        20px 40px #ff4b4b,
+        30px 40px #ff4b4b,
+        40px 40px #ff4b4b,
+        50px 40px #ff4b4b,
+        /* row 5 */
+        30px 50px #ff4b4b,
+        40px 50px #ff4b4b;
+    }
+
+    @keyframes pixelBlink {
+      0%   { filter: brightness(1);   transform: translateY(0)   scale(2); }
+      50%  { filter: brightness(0.4); transform: translateY(-2px) scale(2); }
+      100% { filter: brightness(1);   transform: translateY(0)   scale(2); }
+    }
+  </style>
+</head>
+<body>
+  <div class="pixel-heart-container">
+    <div class="pixel-heart"></div>
+  </div>
+  <button class="start-btn" onclick="location.href='wish.html'">
+      CLICK TO START
+    </button>
+</body>
+</html>
