@@ -9,6 +9,7 @@
       margin: 0;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;        /* เรียงหัวใจ + ปุ่มตามลำดับบนลงล่าง */
       justify-content: center;
       align-items: center;
       background: #111;
@@ -20,13 +21,14 @@
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-bottom: 28px;  /* ระยะห่างระหว่างหัวใจกับปุ่ม */
     }
 
     .pixel-heart {
       position: relative;
       width: 90px;
       height: 70px;
-      transform: scale(2);          /* ขยายให้ใหญ่ */
+      transform: scale(2);  
       transform-origin: center;
       animation: pixelBlink 1s infinite steps(2);
     }
@@ -37,12 +39,11 @@
       width: 10px;
       height: 10px;
       box-shadow:
-        /* row 0 */
         10px 0px #ff4b4b,
         20px 0px #ff4b4b,
         50px 0px #ff4b4b,
         60px 0px #ff4b4b,
-        /* row 1 */
+
         0px 10px #ff4b4b,
         10px 10px #ff4b4b,
         20px 10px #ff4b4b,
@@ -51,7 +52,7 @@
         50px 10px #ff4b4b,
         60px 10px #ff4b4b,
         70px 10px #ff4b4b,
-        /* row 2 */
+
         0px 20px #ff4b4b,
         10px 20px #ff4b4b,
         20px 20px #ff4b4b,
@@ -60,19 +61,19 @@
         50px 20px #ff4b4b,
         60px 20px #ff4b4b,
         70px 20px #ff4b4b,
-        /* row 3 */
+
         10px 30px #ff4b4b,
         20px 30px #ff4b4b,
         30px 30px #ff4b4b,
         40px 30px #ff4b4b,
         50px 30px #ff4b4b,
         60px 30px #ff4b4b,
-        /* row 4 */
+
         20px 40px #ff4b4b,
         30px 40px #ff4b4b,
         40px 40px #ff4b4b,
         50px 40px #ff4b4b,
-        /* row 5 */
+
         30px 50px #ff4b4b,
         40px 50px #ff4b4b;
     }
@@ -82,15 +83,44 @@
       50%  { filter: brightness(0.4); transform: translateY(-2px) scale(2); }
       100% { filter: brightness(1);   transform: translateY(0)   scale(2); }
     }
+
+    /* === ปุ่ม 8-bit (สวยแบบเกมเก่า) === */
+    .start-btn {
+      padding: 12px 28px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: #ff4b4b;
+      color: white;
+      border: 3px solid #ffe6e6;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 2px;
+      font-family: "Courier New", monospace;
+
+      box-shadow: 0 0 0 4px #b30000 inset,
+                  0 6px 0 #660000;
+      transition: transform 0.1s ease;
+    }
+
+    .start-btn:hover {
+      filter: brightness(1.18);
+    }
+
+    .start-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 4px #b30000 inset,
+                  0 2px 0 #660000;
+    }
   </style>
 </head>
+
 <body>
   <div class="pixel-heart-container">
     <div class="pixel-heart"></div>
   </div>
+
   <button class="start-btn" onclick="location.href='wish.html'">
-      CLICK TO START HERE
-    </button>
+    CLICK TO START
+  </button>
 </body>
 </html>
-
