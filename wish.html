@@ -1,42 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>Wish 🎂</title>
+  <title>MJ Wish</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: "Courier New", monospace;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 500px;
+      padding: 20px 30px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(6px);
+      border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 0 20px rgba(255, 0, 70, 0.25);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
 
-  <div class="bg-gradient"></div>
-  <div class="bg-blob blob-1"></div>
-  <div class="bg-blob blob-2"></div>
-  <div class="bg-blob blob-3"></div>
+  <!-- 🔊 PART B — เพิ่มเพลง autoplay -->
+  <audio id="bgm" src="audio/Darkest_Romance.mp3" autoplay loop></audio>
 
-  <main class="page">
+  <!-- หน้าอวยพร -->
+  <div class="card">
+    <h1>💖 Happy Birthday 💖</h1>
+    <p>
+      I hope today is full of joy, surprises,<br>
+      love, and everything that makes you smile.<br><br>
+      You deserve the world. 🎀
+    </p>
+  </div>
 
-    <!-- pixel heart on top -->
-    <div class="pixel-heart-container">
-      <div class="pixel-heart"></div>
-    </div>
+  <!-- 🔊 SCRIPT auto-play เพลง (PART B) -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("bgm");
+      const allowed = localStorage.getItem("musicAllowed");
 
-    <section class="wish-card">
-      <h1 class="wish-title">Happy Birthday 💖</h1>
+      // ป้องกันไม่ให้เล่น auto ถ้าไม่ได้กดจากหน้าแรก
+      localStorage.removeItem("musicAllowed");
 
-      <p class="wish">
-        Here's to another amazing year for you.<br>
-        I'm really grateful that our paths crossed,<br>
-        and I'm even more grateful that you stayed.<br><br>
-        Wishing you happiness, peace, success,<br>
-        and someone who will always be on your side — me. 💕
-      </p>
-
-      <button class="back-btn" onclick="location.href='index.html'">
-        BACK
-      </button>
-    </section>
-
-  </main>
+      if (allowed === "yes") {
+        audio.volume = 1.0; // ปรับความดังได้
+        audio.play().catch(() => {
+          console.log("Autoplay blocked by browser.");
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

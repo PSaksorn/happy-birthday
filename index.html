@@ -40,11 +40,11 @@
     }
 
     .pixel-heart::before {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    box-shadow:
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      box-shadow:
         /* Row 0 */
         20px 0px #ff4b4b,
         30px 0px #ff4b4b,
@@ -112,9 +112,7 @@
         /* Row 7 (Bottom tip) */
         40px 70px #ff4b4b,
         50px 70px #ff4b4b;
-        
     }
-
 
     @keyframes pixelBlink {
       0%   { filter: brightness(1);   transform: translateY(0) scale(2); }
@@ -153,10 +151,22 @@
       <div class="pixel-heart"></div>
     </div>
 
-    <button class="start-btn" onclick="location.href='wish.html'">
+    <!-- 🔹 จุดที่แก้: เปลี่ยน onclick ให้เรียก go() -->
+    <button class="start-btn" onclick="go()">
       CLICK ME
     </button>
   </div>
+
+  <!-- 🔹 จุดที่เพิ่ม: script สำหรับตั้งค่าให้หน้า 2 auto-play เพลง -->
+  <script>
+    function go() {
+      // บอกหน้า 2 ว่า เรากดปุ่มจากหน้าแรกแล้ว (ให้เล่นเพลงได้)
+      localStorage.setItem("musicAllowed", "yes");
+
+      // ไปหน้าคำอวยพร
+      window.location.href = "wish.html";
+    }
+  </script>
 
 </body>
 </html>
