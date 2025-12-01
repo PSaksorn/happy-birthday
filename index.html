@@ -10,16 +10,15 @@
       min-height: 100vh;
       background: #111;
 
-      /* จัดกลางทั้งหมดในแนวตั้งแบบเสถียร */
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* ====== WRAPPER ใหม่ (จุดสำคัญที่ทำให้มันไม่เพี้ยน) ====== */
-    .container {
+    /* ====== WRAPPER กลางที่จัดทุกอย่างแบบตรงกลางแท้ ๆ ====== */
+    .wrapper {
       display: flex;
-      flex-direction: column; /* เรียงบน → ล่าง */
+      flex-direction: column;
       align-items: center;
     }
 
@@ -27,15 +26,23 @@
     .pixel-heart-container {
       display: flex;
       justify-content: center;
-      margin-bottom: 100px;   /* ระยะห่างระหว่างหัวใจกับปุ่ม */
+      align-items: center;
+      margin-bottom: 35px;     /* ระยะห่างกับปุ่ม */
     }
 
     .pixel-heart {
       position: relative;
       width: 90px;
       height: 70px;
+
+      /* ล็อกให้ anchor จุดกลางของ block อยู่ตรงกลางจริง */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       transform: scale(2);
-      transform-origin: center;
+      transform-origin: center center;
+
       animation: pixelBlink 1s infinite steps(2);
     }
 
@@ -103,7 +110,7 @@
       letter-spacing: 2px;
       font-family: "Courier New", monospace;
       box-shadow: 0 0 0 4px #b30000 inset, 0 6px 0 #660000;
-      transition: 0.1s ease;
+      transition: 0.1s;
     }
 
     .start-btn:active {
@@ -115,14 +122,16 @@
 
 <body>
 
-  <div class="container">
+  <div class="wrapper">
+
     <div class="pixel-heart-container">
       <div class="pixel-heart"></div>
     </div>
 
     <button class="start-btn" onclick="location.href='wish.html'">
-      CLICK ME
+      click me
     </button>
+
   </div>
 
 </body>
